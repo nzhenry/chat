@@ -24,7 +24,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/e2e/**/*.js'
+        './test/unit/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -63,7 +63,7 @@ exports.config = {
     //
     // Set a base URL in order to shorten url command calls. If your url parameter starts
     // with "/", the base url gets prepended.
-    baseUrl: 'http://chat-tmp:3000',
+    baseUrl: 'http://localhost:3000',
     //
     // Default timeout for all waitForXXX commands.
     waitforTimeout: 10000,
@@ -102,7 +102,7 @@ exports.config = {
     // see also: http://webdriver.io/guide/testrunner/reporters.html
     reporter: 'xunit',
     reporterOptions: {
-    	outputDir: './test_reports/e2e/firefox/'
+    	outputDir: './test_reports/unit/'
 		},
     
     //
