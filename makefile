@@ -32,7 +32,7 @@ run-tests:
 	@docker exec chat-test npm test || true
 	@mkdir test_reports || true
 	@docker exec chat-test bash -c 'cat test_reports/e2e/firefox/*.xml' > test_reports/firefox_test_report.xml || true
-	@docker exec chat-test bash -c 'cat test_reports/unit/*.xml' > test_reports/unit_test_report.xml || true
+#	@docker exec chat-test bash -c 'cat test_reports/unit/*.xml' > test_reports/unit_test_report.xml || true
 stop-containers:
 	@echo
 	@echo Stopping test containers

@@ -26,7 +26,7 @@ gulp.task('e2e-test', function() {
     });
 });
 
-gulp.task('test', ['unit-test', 'e2e-test']);
+gulp.task('test', ['e2e-test']);
 
 function mkTestDir(dir) {
 	if (!fs.existsSync(dir)){
