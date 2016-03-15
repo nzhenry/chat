@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "gulp start",
-    "test": "jenkins-mocha --cobertura test/unit/*",
+    "test": "jenkins-mocha test/unit/*",
     "e2e": "gulp e2e"
   },
   "dependencies": {
