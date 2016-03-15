@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+	link(rel='stylesheet', href='/stylesheets/style.css')
+	
+	main
+		messages
+			ul
+		users
+			input#usernameInput.form-control(type="textbox")
+			
+	composer
+		input#messageInput.form-control(autocomplete="off")
+		button.btn.btn-lg.btn-primary Send
+		
+	// socket.io
+	script(src="https://cdn.socket.io/socket.io-1.2.0.js")
+
+	// jQuery
+	script(src="http://code.jquery.com/jquery-1.11.1.js")
+
+	// cookie helper
+	script(src="/scripts/js.cookie.js")
+
+	// chat client
+	script(src="/scripts/chat.js")
+	

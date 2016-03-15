@@ -1,0 +1,39 @@
+html {
+	height:100%;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+main {
+	flex: 1;
+	display: flex;
+}
+messages {
+	flex: 1;
+	background-color: beige;
+}
+users {
+	padding: 5px;
+	background-color: aliceblue;
+}
+composer {
+	display: flex;
+	align-items: stretch;
+	padding: 5px;
+	background-color: bisque;
+}
+composer .form-control {
+	flex: 1;
+	height: auto;
+}
+composer .btn {
+	margin-left: 5px;;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+	outline: 0 none;
+}
+messages ul { list-style-type: none; margin: 0; padding: 0; }
+messages ul li { padding: 5px 10px; }
+messages ul li:nth-child(odd) { background: #eee; }
