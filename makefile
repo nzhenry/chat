@@ -1,4 +1,4 @@
-ci: remove-unused-images remove-containers build-image startup-app run-tests stop-containers
+ci: remove-unused-images remove-containers build-image run-tests stop-containers
 
 cd: ci deploy
 
@@ -15,14 +15,14 @@ remove-containers:
 build-image:
 	@echo
 	@echo Building new docker image
+	@rm -rf artifacts || true
 	docker build -t chat .
-startup-app:
+run-tests:
 	@echo
 	@echo Starting up app container for testing
 	docker run -d --name chat-tmp chat
-run-tests:
 	@echo
-	@echo Starting up Selenium standalone servers
+	@echo Starting up Selenium standalone server
 	docker run -d --name chat-selenium-firefox --link chat-tmp selenium/standalone-firefox
 	@echo
 	@echo Starting up test harness
@@ -30,9 +30,8 @@ run-tests:
 	@echo
 	@echo Running tests
 	@docker exec chat-test npm test || true
-	@mkdir test_reports || true
-	@docker exec chat-test bash -c 'cat test_reports/e2e/firefox/*.xml' > test_reports/firefox_test_report.xml || true
-#	@docker exec chat-test bash -c 'cat test_reports/unit/*.xml' > test_reports/unit_test_report.xml || true
+	@docker exec chat-test npm run-script e2e || true
+	@docker cp chat-test:/usr/src/app/artifacts . || true
 stop-containers:
 	@echo
 	@echo Stopping test containers

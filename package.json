@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "gulp start",
-    "test": "gulp test"
+    "test": "jenkins-mocha test/unit/*",
+    "e2e": "gulp e2e"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "gulp-webdriver": "^1.0.3",
+    "jenkins-mocha": "^2.6.0",
     "mocha": "^2.4.5",
     "mockery": "^1.4.1",
     "sinon": "^1.17.3"
