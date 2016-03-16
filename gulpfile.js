@@ -1,10 +1,14 @@
 var gulp = require('gulp');
-var server = require('./lib/server');
+var Server = require('./lib/server');
+var App = require('./lib/app');
+var Chat = require('./lib/chat');
 var webdriver = require('gulp-webdriver');
 var fs = require('fs');
 
 gulp.task('start', function() {
-	server();
+	var app = App();
+	var server = Server(app);
+	Chat(server);
 });
 
 gulp.task('e2e', function() {
