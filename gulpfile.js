@@ -1,10 +1,10 @@
 var gulp = require('gulp');
-var www = require('./lib/www');
+var server = require('./lib/server');
 var webdriver = require('gulp-webdriver');
 var fs = require('fs');
 
 gulp.task('start', function() {
-	www();
+	server();
 });
 
 gulp.task('e2e', function() {
