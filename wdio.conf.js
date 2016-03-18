@@ -102,7 +102,7 @@ exports.config = {
     // see also: http://webdriver.io/guide/testrunner/reporters.html
     reporter: 'xunit',
     reporterOptions: {
-    	outputDir: './artifacts/test/'
+    	outputDir: './artifacts/xunit/'
 		},
     
     //
