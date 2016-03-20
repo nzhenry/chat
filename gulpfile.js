@@ -17,17 +17,19 @@ gulp.task('e2e', function() {
     });
 });
 
-gulp.task('test', function(done) {
+gulp.task('unit', function(done) {
 	var reporterOptions = {
 			xunit: 'artifacts/xunit/unit_test_report.xml',
 			mochawesome: {
 				stdout: '-',
-				options: {reporterOptions: {
-					reportDir: 'artifacts/mochawesome',
-					reportName: 'report',
-					reportTitle: 'Chat Unit Test Report',
-					inlineAssets: true
-				}}
+				options: {
+					reporterOptions: {
+						reportDir: 'artifacts/mochawesome',
+						reportName: 'unit',
+						reportTitle: 'Unit Test Report',
+						inlineAssets: true
+					}
+				}
 			}
 	};
 	return gulp.src('test/unit/*.js', {read: false})
@@ -36,6 +38,8 @@ gulp.task('test', function(done) {
 					reporterOptions: reporterOptions
 				}));
 });
+
+gulp.task('test', ['unit', 'e2e']);
 
 function mkTestDir(dir) {
 	var fs = require('fs');

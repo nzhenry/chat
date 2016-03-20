@@ -30,7 +30,6 @@ run-tests:
 	@echo
 	@echo Running tests
 	@docker exec chat-test npm test || true
-	@docker exec chat-test npm run-script e2e || true
 	@docker cp chat-test:/usr/src/app/artifacts . || true
 stop-containers:
 	@echo
