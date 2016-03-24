@@ -2,6 +2,8 @@ ci: remove-unused-images remove-containers build-image run-tests stop-containers
 
 cd: ci deploy
 
+cd-dev: ci deploy-dev
+
 remove-unused-images:
 	@echo
 	@echo Removing all unused docker images
@@ -44,3 +46,11 @@ deploy:
 	@sleep 1
 	@docker rm chat || true
 	docker run -d --name chat -e VIRTUAL_HOST=chat.livehen.com -e VIRTUAL_PORT=3000 chat
+deploy-dev:
+	@echo
+	@echo Deploying app
+	@docker exec chat bash -c 'kill $$(pidof gulp)' || true
+	@sleep 1
+	@docker rm chat || true
+	docker run -d --name chat -p 3000:3000 chat
+
