@@ -1,17 +1,10 @@
 var assert = require('assert');
-var webdriverio = require('webdriverio');
-var options = {
-	desiredCapabilities: { browserName: 'firefox' },
-	host: 'chat-selenium-firefox',
-	baseUrl: 'http://chat-tmp:3000'
-};
-var client;
+var client = require('../webdriver');
 
-describe('Page Title', function() {
+describe('Chat App', function() {
 
 	before(function() {
 		this.timeout(9999);
-		client = webdriverio.remote(options);
 		return client.init();
 	});
 	
