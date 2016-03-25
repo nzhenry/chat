@@ -13,6 +13,8 @@ describe('Main App', function() {
   		assert.equal(title, 'chat');
   	});
   });
+	
+  it('should have a send button');
   
   after(function() {
   	return client.end();
