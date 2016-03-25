@@ -15,6 +15,9 @@ describe('Main App', function() {
   });
 	
   it('should have a send button');
+  it('should have a username textbox');
+  it('should have a messages area');
+  it('should have a users area');
   
   after(function() {
   	return client.end();
