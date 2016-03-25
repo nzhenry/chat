@@ -8,13 +8,22 @@ gulp.task('start', function() {
 	);
 });
 
-gulp.task('e2e', function() {
-	mkTestDir('./artifacts');
-	mkTestDir('./artifacts/xunit');
-  return gulp.src('wdio.conf.js')
-    .pipe(require('gulp-webdriver')()).on('error', function() {
-      process.exit(1);
-    });
+gulp.task('test', ['unit'], function() {
+	return gulp.src('test/e2e/*.js', {read: false})
+			.pipe(require('gulp-mocha')({
+					reporter: 'mocha-multi',
+					reporterOptions: mochaReporterOptions('e2e')
+				}));
+});
+
+gulp.task('unit', ['instrument'], function(done) {
+	var istanbul = require('gulp-istanbul');
+	return gulp.src('test/unit/*.js', {read: false})
+			.pipe(require('gulp-mocha')({
+					reporter: 'mocha-multi',
+					reporterOptions: mochaReporterOptions('Unit')
+				}))
+			.pipe(istanbul.writeReports({dir: './artifacts/coverage'}));
 });
 
 gulp.task('instrument', function () {
@@ -24,35 +33,16 @@ gulp.task('instrument', function () {
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('unit', ['instrument'], function(done) {
-	var istanbul = require('gulp-istanbul');
-	return gulp.src('test/unit/*.js', {read: false})
-			.pipe(require('gulp-mocha')({
-					reporter: 'mocha-multi',
-					reporterOptions: mochaReporterOptions()
-				}))
-			.pipe(istanbul.writeReports({dir: './artifacts/coverage'}));
-});
-
-gulp.task('test', ['unit', 'e2e']);
-
-function mkTestDir(dir) {
-	var fs = require('fs');
-	if (!fs.existsSync(dir)){
-    fs.mkdirSync(dir);
-	}
-};
-
-function mochaReporterOptions() {
+function mochaReporterOptions(name) {
 	return {
-		xunit: 'artifacts/xunit/unit_test_report.xml',
+		xunit: 'artifacts/xunit/'+name+'_test_report.xml',
 		mochawesome: {
 			stdout: '-',
 			options: {
 				reporterOptions: {
 					reportDir: 'artifacts/mochawesome',
-					reportName: 'unit',
-					reportTitle: 'Unit Test Report',
+					reportName: name,
+					reportTitle: name + ' Test Report',
 					inlineAssets: true
 				}
 			}

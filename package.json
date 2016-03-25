@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "gulp start",
-    "test": "gulp test",
-    "e2e": "gulp e2e"
+    "test": "gulp test"
   },
   "dependencies": {
     "body-parser": "^1.15.0",
@@ -23,12 +22,10 @@
   "devDependencies": {
     "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.2.0",
-    "gulp-webdriver": "https://github.com/nzhenry/gulp-webdriver/tarball/c2dc9608fc0681f1f253c0e05bc7ee7f0cd83d04",
     "mocha-multi": "^0.9.0",
     "mochawesome": "^1.3.2",
     "mockery": "^1.4.1",
     "sinon": "^1.17.3",
-    "wdio-junit-reporter": "0.0.2",
-    "wdio-mocha-framework": "https://github.com/nzhenry/wdio-mocha-framework/tarball/3f1581197895a7a5e6717549c675cea5979bf74c"
+    "webdriverio": "^3.4.0"
   }
 }
