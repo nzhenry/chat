@@ -12,7 +12,7 @@ gulp.task('test', ['unit'], function() {
 	return gulp.src('test/e2e/*.js', {read: false})
 			.pipe(require('gulp-mocha')({
 					reporter: 'mocha-multi',
-					reporterOptions: mochaReporterOptions('e2e')
+					reporterOptions: mochaReporterOptions('acceptance_tests', 'Acceptance Tests')
 				}));
 });
 
@@ -21,7 +21,7 @@ gulp.task('unit', ['instrument'], function(done) {
 	return gulp.src('test/unit/*.js', {read: false})
 			.pipe(require('gulp-mocha')({
 					reporter: 'mocha-multi',
-					reporterOptions: mochaReporterOptions('Unit')
+					reporterOptions: mochaReporterOptions('unit_tests', 'Unit Tests')
 				}))
 			.pipe(istanbul.writeReports({dir: './artifacts/coverage'}));
 });
@@ -33,16 +33,16 @@ gulp.task('instrument', function () {
     .pipe(istanbul.hookRequire());
 });
 
-function mochaReporterOptions(name) {
+function mochaReporterOptions(name, title) {
 	return {
-		xunit: 'artifacts/xunit/'+name+'_test_report.xml',
+		xunit: 'artifacts/xunit/' + name + '.xml',
 		mochawesome: {
 			stdout: '-',
 			options: {
 				reporterOptions: {
 					reportDir: 'artifacts/mochawesome',
 					reportName: name,
-					reportTitle: name + ' Test Report',
+					reportTitle: title,
 					inlineAssets: true
 				}
 			}
