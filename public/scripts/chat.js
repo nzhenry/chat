@@ -13,7 +13,7 @@ function composerSubmit() {
 }
 
 function sendMessage(msg) {
-	$('messages ul').append($('<li>').text(user.name + ': ' + msg));
+	$('#messages').append($('<li>').text(user.name + ': ' + msg));
 	socket.emit('chatMessage', {user: user, msg: msg});
 }
 
@@ -31,7 +31,7 @@ $('composer button').click(function(){
 
 // attach to socket 'chatMessage' event
 socket.on('chatMessage', function(data){
-	$('messages ul').append($('<li>').text(data.user.name + ': ' + data.msg));
+	$('#messages').append($('<li>').text(data.user.name + ': ' + data.msg));
 });
 
 // attach to socket 'connect' event

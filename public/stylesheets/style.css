@@ -2,38 +2,54 @@ html {
 	height:100%;
 }
 body {
-	display: flex;
-	flex-direction: column;
 	height: 100%;
+	padding-top: 0;
 }
-main {
-	flex: 1;
-	display: flex;
-}
-messages {
-	flex: 1;
-	background-color: beige;
-}
-users {
-	padding: 5px;
+#users {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 60px;
+	width: 200px;
 	background-color: aliceblue;
-}
-composer {
-	display: flex;
-	align-items: stretch;
 	padding: 5px;
+}
+#user-list {
+	overflow: scroll;
+}
+#composer {
+	position:absolute;
+	bottom:0;
+	padding:5px;
+	width:100%;
 	background-color: bisque;
 }
-composer .form-control {
-	flex: 1;
-	height: auto;
+#composer .form-control {
+	height: 46px;
 }
-composer .btn {
-	margin-left: 5px;;
+#composer .btn {
+	margin-left: 5px;
+	float:right;
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
 	outline: 0 none;
 }
-messages ul { list-style-type: none; margin: 0; padding: 0; }
-messages ul li { padding: 5px 10px; }
-messages ul li:nth-child(odd) { background: #eee; }
+#messages {
+	background-color: beige;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 205px;
+	bottom: 60px;
+	overflow: scroll;
+}
+#messages li {
+	border-radius: 4px;
+	padding: 5px 10px;
+}
+#messages li:nth-child(odd) {
+	background: #eee;
+}
